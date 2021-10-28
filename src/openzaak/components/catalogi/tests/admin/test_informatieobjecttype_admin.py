@@ -1,11 +1,15 @@
 # SPDX-License-Identifier: EUPL-1.2
 # Copyright (C) 2020 Dimpact
+from django.test import override_settings
 from django.urls import reverse, reverse_lazy
 from django.utils.http import urlencode
 
-from django_webtest import WebTest
+import requests_mock
+from django_webtest import TransactionWebTest, WebTest
 
 from openzaak.accounts.tests.factories import SuperUserFactory
+from openzaak.notifications.tests.mixins import NotificationServiceMixin
+from openzaak.tests.utils import mock_nrc_oas_get
 
 from ...models import ZaakType, ZaakTypeInformatieObjectType
 from ..factories import (
@@ -200,3 +204,38 @@ class IoTypePublishAdminTests(WebTest):
 
         iotype.refresh_from_db()
         self.assertFalse(iotype.concept)
+
+
+class CreateIotypeTests(NotificationServiceMixin, TransactionWebTest):
+    url = reverse_lazy("admin:catalogi_informatieobjecttype_add")
+
+    def setUp(self):
+        super().setUp()
+
+        user = SuperUserFactory.create()
+        self.app.set_user(user)
+
+        self.catalogus = CatalogusFactory.create()
+
+    @override_settings(NOTIFICATIONS_DISABLED=False)
+    @requests_mock.Mocker()
+    def test_create_notification_actie(self, m):
+        mock_nrc_oas_get(m)
+        m.post(
+            "https://notificaties-api.vng.cloud/api/v1/notificaties", status_code=201
+        )
+
+        response = self.app.get(self.url)
+
+        form = response.form
+        form["omschrijving"] = "test"
+        form["vertrouwelijkheidaanduiding"] = "openbaar"
+        form["catalogus"] = self.catalogus.id
+        form["datum_begin_geldigheid"] = "2021-10-20"
+
+        response = form.submit()
+
+        self.assertEqual(response.status_code, 302)
+
+        notification = m.last_request.json()
+        self.assertEqual(notification["actie"], "create")
