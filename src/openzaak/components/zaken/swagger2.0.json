@@ -2593,6 +2593,16 @@
                         "type": "string"
                     },
                     {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Haal details van gerelateerde resources direct op.",
+                        "required": false,
+                        "type": "string",
+                        "enum": [
+                            "zaaktype"
+                        ]
+                    },
+                    {
                         "name": "ordering",
                         "in": "query",
                         "description": "Which field to use when ordering the results.",
@@ -7109,6 +7119,14 @@
                     "description": "Een korte identificatie van de organisatorische eenheid.",
                     "type": "string",
                     "minLength": 1
+                },
+                "include": {
+                    "title": "Include",
+                    "description": "Haal details van gerelateerde resources direct op.\n\nUitleg bij mogelijke waarden:\n\n* `zaaktype` - zaaktype",
+                    "type": "string",
+                    "enum": [
+                        "zaaktype"
+                    ]
                 },
                 "ordering": {
                     "title": "Ordering",

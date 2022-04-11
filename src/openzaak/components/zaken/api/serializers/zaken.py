@@ -202,6 +202,10 @@ class ZaakSerializer(
         many=True, required=False, help_text=_("Een lijst van relevante andere zaken.")
     )
 
+    inclusion_serializers = {
+        "zaaktype": "openzaak.components.catalogi.api.serializers.ZaakTypeSerializer"
+    }
+
     class Meta:
         model = Zaak
         fields = (

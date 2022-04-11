@@ -17,6 +17,11 @@ from vng_api_common.serializers import (
 )
 from vng_api_common.validators import ResourceValidator
 
+from openzaak.utils.serializer_fields import (
+    LooseFKHyperlinkedIdentityField,
+    LooseFKHyperlinkedRelatedField,
+)
+
 from ...constants import AardRelatieChoices, RichtingChoices
 from ...models import BesluitType, ZaakType, ZaakTypenRelatie
 from ..validators import (
@@ -55,6 +60,10 @@ class ZaakTypeSerializer(
     NestedUpdateMixin,
     HyperlinkedModelSerializer,
 ):
+    # For include parameter
+    serializer_related_field = LooseFKHyperlinkedRelatedField
+    serializer_url_field = LooseFKHyperlinkedIdentityField
+
     referentieproces = ReferentieProcesSerializer(
         required=True,
         help_text=_("Het Referentieproces dat ten grondslag ligt aan dit ZAAKTYPE."),

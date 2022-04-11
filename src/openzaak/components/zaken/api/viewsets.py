@@ -35,6 +35,7 @@ from zgw_consumers.models import Service
 
 from openzaak.utils.api import delete_remote_oio
 from openzaak.utils.data_filtering import ListFilterByAuthorizationsMixin
+from openzaak.utils.inclusion import InclusionJSONRenderer
 from openzaak.utils.permissions import AuthRequired
 
 from ..models import (
@@ -228,6 +229,7 @@ class ZaakViewSet(
     ordering_fields = ("startdatum",)
     lookup_field = "uuid"
     pagination_class = PageNumberPagination
+    renderer_classes = (InclusionJSONRenderer,)
 
     permission_classes = (ZaakAuthRequired,)
     required_scopes = {
