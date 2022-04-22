@@ -214,7 +214,7 @@ djangorestframework-camel-case==1.2.0
     #   vng-api-common
 djangorestframework-gis==0.18
     # via -r requirements/ci.txt
-djangorestframework-inclusions @ git+https://github.com/maykinmedia/djangorestframework-inclusions.git@670557f47cc6dc357284f8730940cda18390a85a
+djangorestframework-inclusions @ git+https://github.com/maykinmedia/djangorestframework-inclusions.git@76ae6b6d146d12234919b2f2215e270126faed32
     # via -r requirements/ci.txt
 docutils==0.17.1
     # via
