@@ -140,7 +140,7 @@ class ZaakSerializer(
         source="zaakeigenschap_set",
     )
     status = serializers.HyperlinkedRelatedField(
-        source="current_status_uuid",
+        source="current_status",
         read_only=True,
         allow_null=True,
         view_name="status-detail",
@@ -203,7 +203,13 @@ class ZaakSerializer(
     )
 
     inclusion_serializers = {
-        "zaaktype": "openzaak.components.catalogi.api.serializers.ZaakTypeSerializer"
+        "zaaktype": "openzaak.components.catalogi.api.serializers.ZaakTypeSerializer",
+        "hoofdzaak": "openzaak.components.zaken.api.serializers.ZaakSerializer",
+        "deelzaken": "openzaak.components.zaken.api.serializers.ZaakSerializer",
+        # "relevanteAndereZaken": "openzaak.components.zaken.api.serializers.ZaakSerializer",
+        "eigenschappen": "openzaak.components.zaken.api.serializers.ZaakEigenschapSerializer",
+        "status": "openzaak.components.zaken.api.serializers.StatusSerializer",
+        "resultaat": "openzaak.components.zaken.api.serializers.ResultaatSerializer",
     }
 
     class Meta:
