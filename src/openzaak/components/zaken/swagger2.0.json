@@ -2605,7 +2605,19 @@
                             "eigenschappen",
                             "status",
                             "resultaat",
-                            "zaaktype.catalogus",
+                            "hoofdzaak.zaaktype",
+                            "hoofdzaak.status",
+                            "hoofdzaak.status.statustype",
+                            "hoofdzaak.resultaat",
+                            "hoofdzaak.resultaat.resultaattype",
+                            "deelzaken.zaaktype",
+                            "deelzaken.status",
+                            "deelzaken.status.statustype",
+                            "deelzaken.resultaat",
+                            "deelzaken.resultaat.resultaattype",
+                            "eigenschappen.eigenschap",
+                            "status.statustype",
+                            "resultaat.resultaattype",
                             "*"
                         ]
                     },
@@ -2711,7 +2723,28 @@
                                                 "properties": {}
                                             }
                                         },
-                                        "catalogi:catalogus": {
+                                        "catalogi:resultaattype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:statustype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:eigenschap": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "*": {
                                             "type": "array",
                                             "items": {
                                                 "type": "object",
@@ -2882,7 +2915,28 @@
                                                 "properties": {}
                                             }
                                         },
-                                        "catalogi:catalogus": {
+                                        "catalogi:resultaattype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:statustype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:eigenschap": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "*": {
                                             "type": "array",
                                             "items": {
                                                 "type": "object",
@@ -3065,7 +3119,28 @@
                                                 "properties": {}
                                             }
                                         },
-                                        "catalogi:catalogus": {
+                                        "catalogi:resultaattype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:statustype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:eigenschap": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "*": {
                                             "type": "array",
                                             "items": {
                                                 "type": "object",
@@ -3217,7 +3292,28 @@
                                                 "properties": {}
                                             }
                                         },
-                                        "catalogi:catalogus": {
+                                        "catalogi:resultaattype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:statustype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:eigenschap": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "*": {
                                             "type": "array",
                                             "items": {
                                                 "type": "object",
@@ -3388,7 +3484,28 @@
                                                 "properties": {}
                                             }
                                         },
-                                        "catalogi:catalogus": {
+                                        "catalogi:resultaattype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:statustype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:eigenschap": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "*": {
                                             "type": "array",
                                             "items": {
                                                 "type": "object",
@@ -3562,7 +3679,28 @@
                                                 "properties": {}
                                             }
                                         },
-                                        "catalogi:catalogus": {
+                                        "catalogi:resultaattype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:statustype": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "catalogi:eigenschap": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {}
+                                            }
+                                        },
+                                        "*": {
                                             "type": "array",
                                             "items": {
                                                 "type": "object",
@@ -7447,7 +7585,7 @@
                 },
                 "include": {
                     "title": "Include",
-                    "description": "Haal details van gerelateerde resources direct op.\n\nUitleg bij mogelijke waarden:\n\n* `zaaktype` - zaaktype\n* `hoofdzaak` - hoofdzaak\n* `deelzaken` - deelzaken\n* `eigenschappen` - eigenschappen\n* `status` - status\n* `resultaat` - resultaat\n* `zaaktype.catalogus` - zaaktype.catalogus\n* `*` - *",
+                    "description": "Haal details van gerelateerde resources direct op.\n\nUitleg bij mogelijke waarden:\n\n* `zaaktype` - zaaktype\n* `hoofdzaak` - hoofdzaak\n* `deelzaken` - deelzaken\n* `eigenschappen` - eigenschappen\n* `status` - status\n* `resultaat` - resultaat\n* `hoofdzaak.zaaktype` - hoofdzaak.zaaktype\n* `hoofdzaak.status` - hoofdzaak.status\n* `hoofdzaak.status.statustype` - hoofdzaak.status.statustype\n* `hoofdzaak.resultaat` - hoofdzaak.resultaat\n* `hoofdzaak.resultaat.resultaattype` - hoofdzaak.resultaat.resultaattype\n* `deelzaken.zaaktype` - deelzaken.zaaktype\n* `deelzaken.status` - deelzaken.status\n* `deelzaken.status.statustype` - deelzaken.status.statustype\n* `deelzaken.resultaat` - deelzaken.resultaat\n* `deelzaken.resultaat.resultaattype` - deelzaken.resultaat.resultaattype\n* `eigenschappen.eigenschap` - eigenschappen.eigenschap\n* `status.statustype` - status.statustype\n* `resultaat.resultaattype` - resultaat.resultaattype\n* `*` - *",
                     "type": "string",
                     "enum": [
                         "zaaktype",
@@ -7456,7 +7594,19 @@
                         "eigenschappen",
                         "status",
                         "resultaat",
-                        "zaaktype.catalogus",
+                        "hoofdzaak.zaaktype",
+                        "hoofdzaak.status",
+                        "hoofdzaak.status.statustype",
+                        "hoofdzaak.resultaat",
+                        "hoofdzaak.resultaat.resultaattype",
+                        "deelzaken.zaaktype",
+                        "deelzaken.status",
+                        "deelzaken.status.statustype",
+                        "deelzaken.resultaat",
+                        "deelzaken.resultaat.resultaattype",
+                        "eigenschappen.eigenschap",
+                        "status.statustype",
+                        "resultaat.resultaattype",
                         "*"
                     ]
                 },
